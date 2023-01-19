@@ -1,6 +1,7 @@
 import flatpickr from "flatpickr";
 // Додатковий імпорт стилів
 import "flatpickr/dist/flatpickr.min.css";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const options = {
     enableTime: true,
@@ -30,8 +31,6 @@ const secondsEl = document.querySelector("span[data-seconds]");
 
 let timerId = null;
 
-
-
 startBtnEl.addEventListener('click', onButtonStart);
 
 function onButtonStart(){
@@ -52,16 +51,19 @@ function onButtonStart(){
         startBtnEl.disabled = false;
     };
     
-
-
    }, 1000);
 
    
 }
  function showTime(timeElements){
     daysEl.textContent = timeElements.days;
+    hoursEl.textContent = timeElements.hours;
+    minutesEl.textContent = timeElements.minutes;
+    secondsEl.textContent = timeElements.seconds;
  }
-
+function pad(value){
+    return String(value).padStart(2, '0');
+}
 
 function convertMs(ms) {
     // Number of milliseconds per unit of time
@@ -71,13 +73,13 @@ function convertMs(ms) {
     const day = hour * 24;
   
     // Remaining days
-    const days = Math.floor(ms / day);
+    const days = pad(Math.floor(ms / day));
     // Remaining hours
-    const hours = Math.floor((ms % day) / hour);
+    const hours = pad(Math.floor((ms % day) / hour));
     // Remaining minutes
-    const minutes = Math.floor(((ms % day) % hour) / minute);
+    const minutes = pad(Math.floor(((ms % day) % hour) / minute));
     // Remaining seconds
-    const seconds = Math.floor((((ms % day) % hour) % minute) / second);
+    const seconds = pad(Math.floor((((ms % day) % hour) % minute) / second));
   
     return { days, hours, minutes, seconds };
   }
