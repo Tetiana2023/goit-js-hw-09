@@ -16,11 +16,27 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.timer {
+  display: flex;
+  gap: 15px;
+
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10;
+}
+
 .value {
- color: black;
-  font-size: 18px;
+  color: red;
+  font-size: 40px;
 }
+
 .label {
-  color: rgb(40, 40, 225);
-  font-size: 18px;
-}
+  color: black;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+ }
