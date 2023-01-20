@@ -16,3 +16,11 @@ img {
   display: block;
   max-width: 100%;
 }
+.value {
+ color: black;
+  font-size: 18px;
+}
+.label {
+  color: rgb(40, 40, 225);
+  font-size: 18px;
+}
